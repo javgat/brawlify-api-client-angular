@@ -1,0 +1,580 @@
+swagger: '2.0'
+info:
+  description: >-
+    Some queries of the Brawlify API. This content is not affiliated with,
+    endorsed, sponsored, or specifically approved by Supercell nor Brawlify and
+    Supercell or Brawlify are not responsible for it
+  version: "1.0.0"
+  title: "Brawlify API (not official)"
+host: "api.brawlapi.com"
+basePath: "/v1"
+schemes:
+- "https"
+- "http"
+tags:
+- name: "brawler"
+  description: "Information about brawlers"
+- name: "map"
+  description: "Information about game maps"
+- name: "gamemode"
+  description: "Information about gamemodes"
+paths:
+  /gamemodes:
+    get:
+      tags:
+      - "gamemode"
+      summary: "Finds all gamemodes"
+      description: "All gamemodes"
+      operationId: "getAllGamemodes"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/GameMode"
+        "400":
+          description: "Invalid status value"
+  /gamemodes/{gamemodeId}:
+    get:
+      tags:
+      - "gamemode"
+      summary: "Finds a gamemode based on gamemode ID"
+      description: "A gamemode information"
+      operationId: "getGamemode"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "gamemodeId"
+        in: "path"
+        description: "ID of gamemode to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/GameMode"
+        "400":
+          description: "Invalid status value"
+  /brawlers:
+    get:
+      tags:
+      - "brawler"
+      summary: "Finds all brawlers"
+      description: "All brawlers"
+      operationId: "getAllBrawlers"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Brawler"
+        "400":
+          description: "Invalid status value"
+  /brawlers/{brawlerId}:
+    get:
+      tags:
+      - "brawler"
+      summary: "Finds a brawler based on brawler ID"
+      description: "A brawler information"
+      operationId: "getBrawler"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "brawlerId"
+        in: "path"
+        description: "ID of brawler to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Brawler"
+        "400":
+          description: "Invalid status value"
+  /maps:
+    get:
+      tags:
+      - "map"
+      summary: "Finds all maps"
+      description: "All maps"
+      operationId: "getAllMaps"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Map"
+        "400":
+          description: "Invalid status value"
+  /maps/{mapId}:
+    get:
+      tags:
+      - "map"
+      summary: "Finds a map based on map ID"
+      description: "A map information"
+      operationId: "getMap"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "mapId"
+        in: "path"
+        description: "ID of map to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Map"
+        "400":
+          description: "Invalid status value"
+  /maps/{mapId}/{trophyRange}:
+    get:
+      tags:
+      - "map"
+      summary: "Finds a map based on map ID with custom stats"
+      description: "A map information, with the stats of the trophy range"
+      operationId: "getMapWithTrophyRange"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "mapId"
+        in: "path"
+        description: "ID of map to return"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "trophyRange"
+        in: "path"
+        description: "Trophy Range of which return the stats"
+        required: true
+        type: "string"
+        enum: ["0-299", "300-599", "600+"]
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Map"
+        "400":
+          description: "Invalid status value"
+  
+definitions:
+  GameMode:
+    type: "object"
+    required:
+    - "id"
+    - "name"
+    - "hash"
+    - "scHash"
+    - "disabled"
+    - "color"
+    - "version"
+    - "title"
+    - "tutorial"
+    - "description"
+    - "shortDescription"
+    - "sort1"
+    - "sort2"
+    - "link"
+    - "imageUrl"
+    - "imageUrl2"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      hash:
+        type: "string"
+      scHash:
+        type: "string"
+      disabled:
+        type: "boolean"
+      color:
+        type: "string"
+      version:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      tutorial:
+        type: "string"
+      description:
+        type: "string"
+      shortDescription:
+        type: "string"
+      sort1:
+        type: "integer"
+        format: "int64"
+      sort2:
+        type: "integer"
+        format: "int64"
+      link:
+        type: "string"
+      imageUrl:
+        type: "string"
+      imageUrl2:
+        type: "string"
+  Brawler:
+    type: "object"
+    required:
+    - "id"
+    - "avatarId"
+    - "name"
+    - "hash"
+    - "path"
+    - "released"
+    - "version"
+    - "link"
+    - "imageUrl"
+    - "imageUrl2"
+    - "imageUrl3"
+    - "class"
+    - "sort2"
+    - "rarity"
+    - "description"
+    - "starPowers"
+    - "gadgets"
+    - "videos"
+    properties:
+      id:  
+        type: "integer"
+        format: "int64"
+      avatarId:  
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      hash:
+        type: "string"
+      path:
+        type: "string"
+      released:
+        type: "boolean"
+      version:  
+        type: "integer"
+        format: "int64"
+      link:
+        type: "string"
+      imageUrl:
+        type: "string"
+      imageUrl2:
+        type: "string"
+      imageUrl3:
+        type: "string"
+      class:
+        $ref: "#/definitions/Class"
+      rarity:
+        $ref: "#/definitions/Rarity"
+      unlock:
+        type: "string"
+      description:
+        type: "string"
+      starPowers: 
+        type: array
+        items:
+          $ref: "#/definitions/StarPower"
+      gadgets: 
+        type: array
+        items:
+          $ref: "#/definitions/Gadget"
+      videos: 
+        type: array
+        items:
+          $ref: "#/definitions/Video"
+  Class:
+    type: "object"
+    required:
+    - "id"
+    - "name"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+  Rarity:
+    type: "object"
+    required:
+    - "id"
+    - "name"
+    - "color"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      color:
+        type: "string"
+  StarPower:
+    type: "object"
+    required:
+    - "id"
+    - "name"
+    - "path"
+    - "version"
+    - "description"
+    - "imageUrl"
+    - "released"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      path:
+        type: "string"
+      version:
+        type: "integer"
+        format: "int64"
+      description:
+        type: "string"
+      imageUrl:
+        type: "string"
+      released:
+        type: "boolean"
+  Gadget:
+    type: "object"
+    required:
+    - "id"
+    - "name"
+    - "path"
+    - "version"
+    - "description"
+    - "imageUrl"
+    - "released"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      path:
+        type: "string"
+      version:
+        type: "integer"
+        format: "int64"
+      description:
+        type: "string"
+      imageUrl:
+        type: "string"
+      released:
+        type: "boolean"
+  Video:
+    type: "object"
+    properties:
+      type:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      description:
+        type: "string"
+      duration:
+        type: "string"
+      videoUrl:
+        type: "string"
+      previewUrl:
+        type: "string"
+      uploadDate:
+        type: "string"
+  Map:
+    type: "object"
+    required:
+    - "id"
+    - "new"
+    - "disabled"
+    - "name"
+    - "hash"
+    - "version"
+    - "link"
+    - "imageUrl"
+    - "environment"
+    - "gameMode"
+    - "lastActive"
+    - "dataUpdated"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      new:
+        type: "boolean"
+      disabled:
+        type: "boolean"
+      name:
+        type: "string"
+      hash:
+        type: "string"
+      version:
+        type: "integer"
+        format: "int64"
+      link:
+        type: "string"
+      imageUrl:
+        type: "string"
+      credit:
+        type: "string"
+      environment:
+        $ref: "#/definitions/Environment"
+      gameMode:
+        $ref: "#/definitions/GameModeRef"
+      lastActive:
+        type: "integer"
+        format: "int64"
+      dataUpdated:
+        type: "integer"
+        format: "int64"
+      stats:
+        type: "array"
+        items:
+          $ref: "#/definitions/Stat"
+        description: "Only present when obtaining the map alone, not with a group"
+      teamStats:
+        type: "array"
+        items:
+          $ref: "#/definitions/TeamStat"
+        description: "Only present when obtaining the map alone, not with a group"
+  Environment:
+    type: "object"
+    required:
+    - "id"
+    - "name"
+    - "hash"
+    - "path"
+    - "version"
+    - "imageUrl"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      hash:
+        type: "string"
+      path:
+        type: "string"
+      version:
+        type: "integer"
+        format: "int64"
+      imageUrl:
+        type: "string"
+  GameModeRef:
+    type: "object"
+    required:
+    - "id"
+    - "name"
+    - "hash"
+    - "path"
+    - "version"
+    - "color"
+    - "link"
+    - "imageUrl"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      hash:
+        type: "string"
+      version:
+        type: "integer"
+        format: "int64"
+      color:
+        type: "string"
+      link:
+        type: "string"
+      imageUrl:
+        type: "string"
+  Stat:
+    type: "object"
+    required:
+    - "brawler"
+    - "winRate"
+    - "useRate"
+    - "starRate"
+    properties:
+      brawler:
+        type: "integer"
+        format: "int64"
+        description: "id of the brawler"
+      winRate:
+        type: "number"
+        format: "double"
+      useRate:
+        type: "number"
+        format: "double"
+      starRate:
+        type: "number"
+        format: "double"
+  TeamStat:
+    type: "object"
+    required:
+    - "name"
+    - "hash"
+    - "brawler1"
+    - "brawler2"
+    - "brawler3"
+    - "data"
+    properties:
+      name:
+        type: "string"
+      hash:
+        type: "string"
+      brawler1:
+        type: "integer"
+        format: "int64"
+        description: "brawler id"
+      brawler2:
+        type: "integer"
+        format: "int64"
+        description: "brawler id"
+      brawler3:
+        type: "integer"
+        format: "int64"
+        description: "brawler id"
+      data:
+        $ref: "#/definitions/TeamStatData"
+  TeamStatData:
+    type: "object"
+    required:
+    - "winRate"
+    - "useRate"
+    - "wins"
+    - "losses"
+    - "draws"
+    - "total"
+    properties:
+      winRate:
+        type: "number"
+        format: "double"
+      useRate:
+        type: "number"
+        format: "double"
+      wins:
+        type: "integer"
+        format: "int64"
+      losses:
+        type: "integer"
+        format: "int64"
+      draws:
+        type: "integer"
+        format: "int64"
+      total:
+        type: "integer"
+        format: "int64"
