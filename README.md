@@ -10,7 +10,17 @@ or more information see Supercell's Fan Content Policy:
 
 ## Installation
 
+```sh
 npm install @javgat/brawlify-api-client-angular@1.0.0 --save
+```
+
+It's possible that the installation fails due to peer dependencies.
+
+In order to solve this, instead install it with:
+
+```sh
+npm install @javgat/brawlify-api-client-angular@1.0.0 --save --legacy-peer-deps
+```
 
 ## Generation
 
