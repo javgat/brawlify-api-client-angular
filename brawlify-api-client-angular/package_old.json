@@ -1,7 +1,7 @@
 {
   "name": "@javgat/brawlify-api-client-angular",
   "version": "1.0.0",
-  "description": "Angular client for @javgat/brawlify-api-client-angular, made with Swagger",
+  "description": "Angular client for @javgat/brawlify-api-client-angular, made with Swagger. Disclaimer: This content is not affiliated with, endorsed, sponsored, or specifically approved by Supercell nor Brawlify and neither Supercell nor Brawlify are responsible for it or more information see Supercell's Fan Content Policy: https://supercell.com/en/fan-content-policy/.",
   "author": "Javier Gaton Herguedas",
   "keywords": [
     "brawlify",
