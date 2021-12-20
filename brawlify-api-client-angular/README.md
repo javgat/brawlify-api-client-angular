@@ -1,4 +1,4 @@
-## @javgat/brawlify-api-client-angular@1.0.0
+## @javgat/brawlify-api-client-angular@1.0.1-SNAPSHOT.202112210044
 
 ### Building
 
@@ -19,7 +19,7 @@ Navigate to the folder of your consuming project and run one of next commands.
 _published:_
 
 ```
-npm install @javgat/brawlify-api-client-angular@1.0.0 --save
+npm install @javgat/brawlify-api-client-angular@1.0.1-SNAPSHOT.202112210044 --save
 ```
 
 _without publishing (not recommended):_

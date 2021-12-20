@@ -9,9 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { GameMode } from './gameMode';
 
 
-export interface ModelClass { 
-    id: number;
-    name: string;
+export interface GameModeList { 
+    list: Array<GameMode>;
 }

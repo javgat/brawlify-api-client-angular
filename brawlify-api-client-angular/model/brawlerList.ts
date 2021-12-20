@@ -9,9 +9,9 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { Brawler } from './brawler';
 
 
-export interface ModelClass { 
-    id: number;
-    name: string;
+export interface BrawlerList { 
+    list: Array<Brawler>;
 }

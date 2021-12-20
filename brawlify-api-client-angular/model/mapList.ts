@@ -11,7 +11,6 @@
  */
 
 
-export interface ModelClass { 
-    id: number;
-    name: string;
+export interface MapList { 
+    list: Array<any>;
 }
