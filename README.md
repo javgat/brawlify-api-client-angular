@@ -1,4 +1,7 @@
 # brawlify-api-client-angular
+
+![Version 1.0.1](https://img.shields.io/badge/version-1.0.1-informational) ![License: MIT](https://img.shields.io/badge/license-MIT-green)
+
 Package for an angular client of the Brawlify API
 
 Automatic generation using Swagger, with the tool swagger-codegen-cli.

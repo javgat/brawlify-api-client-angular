@@ -4,7 +4,7 @@ info:
     Some queries of the Brawlify API. This content is not affiliated with,
     endorsed, sponsored, or specifically approved by Supercell nor Brawlify and
     Supercell or Brawlify are not responsible for it
-  version: "1.0.0"
+  version: "1.0.1"
   title: "Brawlify API (not official)"
 host: "api.brawlapi.com"
 basePath: "/v1"
@@ -32,9 +32,7 @@ paths:
         "200":
           description: "successful operation"
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/GameMode"
+            $ref: "#/definitions/GameModeList"
         "400":
           description: "Invalid status value"
   /gamemodes/{gamemodeId}:
@@ -73,9 +71,7 @@ paths:
         "200":
           description: "successful operation"
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Brawler"
+            $ref: "#/definitions/BrawlerList"
         "400":
           description: "Invalid status value"
   /brawlers/{brawlerId}:
@@ -114,9 +110,7 @@ paths:
         "200":
           description: "successful operation"
           schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Map"
+            $ref: "#/definitions/MapList"
         "400":
           description: "Invalid status value"
   /maps/{mapId}:
@@ -173,6 +167,33 @@ paths:
           description: "Invalid status value"
   
 definitions:
+  GameModeList:
+    type: "object"
+    required:
+    - "list"
+    properties:
+      list:
+        type: "array"
+        items:
+          $ref: "#/definitions/GameMode"
+  MapList:
+    type: "object"
+    required:
+    - "list"
+    properties:
+      list:
+        type: "array"
+        items:
+          $ref: "#/definitions/Map"
+  BrawlerList:
+    type: "object"
+    required:
+    - "list"
+    properties:
+      list:
+        type: "array"
+        items:
+          $ref: "#/definitions/Brawler"
   GameMode:
     type: "object"
     required:
